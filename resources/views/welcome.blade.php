@@ -109,90 +109,27 @@
     <section class="week-themes px fix">
         <div class="container">
             <div class="section-title">
-                <h2> Free html templates</h2>
+                <h2> {{__('Free html templates')}}</h2>
                 <p>Every week we hand-pick some of the best new website wordpress themes from our collection. These beautiful wordpress themes are making our heads turn!</p>
             </div>
             <div class="row">
+                @foreach($posts as $post)
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xl-3">
                     <div class="template">
                         <a href="">
-                            <img src="assets/img/template/review-1.jpg" alt="" />
-                            <h3>foodmid</h3>
+                            <img src="{{asset('storage/uploads/post/'.$post->image)}}" alt="{{$post->title}}" />
+                            <h3>{!! str_limit($post->title,20) !!}</h3>
                         </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <p>{!! str_limit($post->body ,30)!!}</p>
+                        <ul class="post_footer">
+                            <li>
+                                <a href="#"><i class="ion-eye"></i>{{ $post->view_count }}</a>
+                            </li>
+                        </ul>
                         <a class="download" href="">READ MORE</a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xl-3">
-                    <div class="template">
-                        <a href="">
-                            <img src="assets/img/template/review-2.jpg" alt="" />
-                            <h3>foodmid</h3>
-                        </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <a class="download" href="">READ MORE</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xl-3">
-                    <div class="template">
-                        <a href="">
-                            <img src="assets/img/template/review-3.jpg" alt="" />
-                            <h3>foodmid</h3>
-                        </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <a class="download" href="">READ MORE</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xl-3">
-                    <div class="template">
-                        <a href="">
-                            <img src="assets/img/template/review-4.jpg" alt="" />
-                            <h3>foodmid</h3>
-                        </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <a class="download" href="">READ MORE</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xl-3">
-                    <div class="template">
-                        <a href="">
-                            <img src="assets/img/template/preview-5.jpg" alt="" />
-                            <h3>foodmid</h3>
-                        </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <a class="download" href="">READ MORE</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xl-3">
-                    <div class="template">
-                        <a href="">
-                            <img src="assets/img/template/preview-6.jpg" alt="" />
-                            <h3>foodmid</h3>
-                        </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <a class="download" href="">READ MORE</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xl-3">
-                    <div class="template">
-                        <a href="">
-                            <img src="assets/img/template/preview-11.jpg" alt="" />
-                            <h3>foodmid</h3>
-                        </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <a class="download" href="">READ MORE</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xl-3">
-                    <div class="template">
-                        <a href="">
-                            <img src="assets/img/template/preview-13.jpg" alt="" />
-                            <h3>foodmid</h3>
-                        </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                        <a class="download" href="">READ MORE</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="html-button text-center">
                 <a href="">VIEW ALL</a>

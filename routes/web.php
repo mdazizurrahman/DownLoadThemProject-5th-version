@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'HomeController@index')->name('home');
 Route::post('subscriber','SubscriberController@store')->name('subscriber.store');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 // for Admin Route Group
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function (){
@@ -33,6 +32,10 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::get('/subscriber','SubscriberController@index')->name('subscriber.index');
     Route::delete('/subscriber/{subscriber}','SubscriberController@destroy')->name('subscriber.destroy');
 
+    Route::get('/setting','SettingsController@index')->name('settings.settings');
+    Route::put('/updateprofile','SettingsController@Updateprofile')->name('profile.update');
+    Route::put('/updatepassword','SettingsController@Updatepassword')->name('password.update');
+
 
 });
 
@@ -40,4 +43,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
 Route::group(['as'=>'user.','prefix'=>'user','namespace'=>'Author','middleware'=>['auth','user']], function (){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
     Route::resource('post','PostController');
+
+    Route::get('/setting','SettingsController@index')->name('settings.settings');
+    Route::put('/updateprofile','SettingsController@Updateprofile')->name('profile.update');
+    Route::put('/updatepassword','SettingsController@Updatepassword')->name('password.update');
 });

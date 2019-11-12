@@ -8,7 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
+    <link rel="icon" href="{{asset('css/logo (3).png')}}" type="image/x-icon">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/css/plugins.min.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/css/all.css')}}" />

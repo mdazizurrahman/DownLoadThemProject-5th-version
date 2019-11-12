@@ -247,6 +247,7 @@ class PostController extends Controller
             $post->is_approved = true;
             $post->save();
             $post->user->notify(new AuthorPostApprovel($post));
+            $subscribers = Subscriber::all();
             foreach ($subscribers as $subscriber)
             {
                 Notification::route('mail',$subscriber->email)

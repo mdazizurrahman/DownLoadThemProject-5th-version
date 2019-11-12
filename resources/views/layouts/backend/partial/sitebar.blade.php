@@ -71,24 +71,57 @@
                             <span>{{__('Subscribers')}}</span>
                         </a>
                     </li>
-
-                    @endif
-                    @if(Request::is('user*'))
-                        <li class="{{Request::is('user/dashboard') ?'active' : ''}}">
-                        <a href="{{route('user.dashboard')}}">
-                            <i class="material-icons">{{__('dashboard')}}</i>
-                            <span>{{__('Home')}}</span>
-                        </a>
-                    </li>
-
-                        <li class="{{Request::is('user/post*')? 'active' : ''}}">
-                            <a href="{{route('user.post.index')}}">
-                                <i class="material-icons">{{__('apps')}}</i>
-                                <span>{{__('Posts')}}</span>
+                        <li class="{{Request::is('admin/setting*')? 'active' : ''}}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">{{__('settings')}}</i>
+                                <span>{{__('Settings')}}</span>
                             </a>
+                            <ul class="ml-menu">
+                                <li class="{{Request::is('admin/setting')? 'active' : '' }}">
+                                    <a href="{{route('admin.settings.settings')}}">
+                                        <i class="material-icons">{{__('person')}}</i>{{__('Profile')}}</a>
+
+                                </li>
+                                <li>
+                                    <a href="pages/tables/jquery-datatable.html">Jquery Datatables</a>
+                                </li>
+                                <li>
+                                    <a href="pages/tables/editable-table.html">Editable Tables</a>
+                                </li>
+                            </ul>
                         </li>
                     @endif
+                   @if(Auth::check() && Auth::user()->role->id == 2)
+                        @if(Request::is('user*'))
+                            <li class="{{Request::is('user/dashboard') ?'active' : ''}}">
+                                <a href="{{route('user.dashboard')}}">
+                                    <i class="material-icons">{{__('dashboard')}}</i>
+                                    <span>{{__('Home')}}</span>
+                                </a>
+                            </li>
 
+                            <li class="{{Request::is('user/post*')? 'active' : ''}}">
+                                <a href="{{route('user.post.index')}}">
+                                    <i class="material-icons">{{__('apps')}}</i>
+                                    <span>{{__('Posts')}}</span>
+                                </a>
+                            </li>
+                            <li class="{{Request::is('user/setting*')? 'active' : ''}}">
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <i class="material-icons">{{__('settings')}}</i>
+                                    <span>{{__('Settings')}}</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li class="{{Request::is('user/setting')? 'active' : '' }}">
+                                        <a href="{{route('user.settings.settings')}}">
+                                            <i class="material-icons">{{__('person')}}</i>{{__('Profile')}}</a>
+
+                                    </li>
+
+                                </ul>
+                            </li>
+                        @endif
+                    @endif
                     
                     <hr>
                     <li>
