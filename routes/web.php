@@ -14,9 +14,13 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('subscriber','SubscriberController@store')->name('subscriber.store');
+
+
 Auth::routes();
 
-
+Route::group(['middleware'=>['auth']], function(){
+    Route::post('favorite/{post}/add','FavoriteController@add')->name('post.favorite');
+});
 
 // for Admin Route Group
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function (){

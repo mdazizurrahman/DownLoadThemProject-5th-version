@@ -1,7 +1,11 @@
 @extends('layouts.frontend.app')
 @section('title','Home')
 @push('css')
-
+    <style>
+        .favorite_posts{
+            color:blue;
+        }
+    </style>
 @endpush
 @section('content')
     <div class="benar-area">
@@ -121,10 +125,36 @@
                             <h3>{!! str_limit($post->title,20) !!}</h3>
                         </a>
                         <p>{!! str_limit($post->body ,30)!!}</p>
-                        <ul class="post_footer">
+                        {{--<ul class="post_footer">--}}
+                            {{--<li>--}}
+                                {{--<a href="#"><i class="ion-eye"></i></a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                        <style>
+                            .post-footer{display:flex;}
+                            .post-footer li a {padding-left:10px}
+                        </style>
+                        <ul class="post-footer" style="">
+                            <li "><a href="#"><i class="material-icons">{{__('comments')}}</i></a></li>
                             <li>
-                                <a href="#"><i class="ion-eye"></i>{{ $post->view_count }}</a>
+                                @guest
+                                    <a href="javascript:void(0);" onclick="toastr.info('To add favorite list. You need to login first.','Info',{
+                                        closeButton: true,
+                                        progressBar: true,
+                                        })">
+                                        <i class="material-icons">{{__('favorite')}}</i>
+                                        </i>{{$post->favorite_to_users->count()}}</a>
+                                @else
+                                    <a href="javascript:void(0);" onclick="document.getElementById('favorite-form-{{ $post->id }}').submit();">
+
+                                        <i class="material-icons">{{__('favorite')}}</i>
+                                        </i>{{$post->favorite_to_users->count()}}</a>
+                                    <form id="favorite-form-{{$post->id}}" style="display: none;" method="POST" action="{{route('post.favorite',$post->id)}}">
+                                        @csrf
+                                    </form>
+                                @endguest
                             </li>
+                            <li 5px; "><a href="#"><i class="material-icons">{{__('visibility')}}</i>{{ $post->view_count }}</a></li>
                         </ul>
                         <a class="download" href="">READ MORE</a>
                     </div>

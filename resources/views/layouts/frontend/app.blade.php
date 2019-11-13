@@ -9,9 +9,11 @@
 
     <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
     <link rel="icon" href="{{asset('css/logo (3).png')}}" type="image/x-icon">
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}" />
+    <link rel="stylesheet" href="{{asset('frontend/common-css/icon.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/css/plugins.min.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/css/all.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/css/icofont.min.css')}}" />
